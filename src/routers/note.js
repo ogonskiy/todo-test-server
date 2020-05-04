@@ -27,11 +27,11 @@ router.get('/notes/:id', async (req, res) => {
 })
 
 router.post('/notes', async (req, res) => {
-  const note = new Note(req.body)
+  new Note(req.body)
 
   try {
     note.save()
-    res.status(201).send(note)
+    res.status(201).send()
   } catch (error) {
     res.status(400).send(error)
   }
@@ -61,7 +61,7 @@ router.patch('/notes/:id', async (req, res) => {
     })
     await note.save()
 
-    res.send(note)
+    res.send()
   } catch (error) {
     res.status(400).send()
   }
@@ -76,7 +76,7 @@ router.delete('/notes/:id', async (req, res) => {
     if (!note) {
       res.status(404).send()
     }
-    res.send(note)
+    res.send()
   } catch (error) {
     res.status(500).send()
   }
